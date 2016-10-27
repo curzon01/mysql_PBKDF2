@@ -106,14 +106,14 @@ Input:
   dkLen = 64
 
 Output:
-  DK = 86 7f 70 cf 1a de 02 cf 
-       f3 75 25 99 a3 a5 3d c4 
-       af 34 c7 a6 69 81 5a e5 
-       d5 13 55 4e 1c 8c f2 52 
-       c0 2d 47 0a 28 5a 05 01 
-       ba d9 99 bf e9 43 c0 8f 
-       05 02 35 d7 d6 8b 1d a5 
-       5e 63 f7 3b 60 a5 7f ce 
+  DK = 86 7f 70 cf 1a de 02 cf
+       f3 75 25 99 a3 a5 3d c4
+       af 34 c7 a6 69 81 5a e5
+       d5 13 55 4e 1c 8c f2 52
+       c0 2d 47 0a 28 5a 05 01
+       ba d9 99 bf e9 43 c0 8f
+       05 02 35 d7 d6 8b 1d a5
+       5e 63 f7 3b 60 a5 7f ce
 */
 SELECT system.PBKDF2('SHA512', 'password', 'salt', 1, 64, false)=UPPER('867f70cf1ade02cff3752599a3a53dc4af34c7a669815ae5d513554e1c8cf252c02d470a285a0501bad999bfe943c08f050235d7d68b1da55e63f73b60a57fce');
 /*
@@ -126,14 +126,14 @@ Input:
   dkLen = 64
 
 Output:
-  DK = e1 d9 c1 6a a6 81 70 8a 
-       45 f5 c7 c4 e2 15 ce b6 
-       6e 01 1a 2e 9f 00 40 71 
-       3f 18 ae fd b8 66 d5 3c 
-       f7 6c ab 28 68 a3 9b 9f 
-       78 40 ed ce 4f ef 5a 82 
-       be 67 33 5c 77 a6 06 8e 
-       04 11 27 54 f2 7c cf 4e 
+  DK = e1 d9 c1 6a a6 81 70 8a
+       45 f5 c7 c4 e2 15 ce b6
+       6e 01 1a 2e 9f 00 40 71
+       3f 18 ae fd b8 66 d5 3c
+       f7 6c ab 28 68 a3 9b 9f
+       78 40 ed ce 4f ef 5a 82
+       be 67 33 5c 77 a6 06 8e
+       04 11 27 54 f2 7c cf 4e
 */
 SELECT system.PBKDF2('SHA512', 'password', 'salt', 2, 64, false)=UPPER('e1d9c16aa681708a45f5c7c4e215ceb66e011a2e9f0040713f18aefdb866d53cf76cab2868a39b9f7840edce4fef5a82be67335c77a6068e04112754f27ccf4e');
 /*
@@ -146,14 +146,14 @@ Input:
   dkLen = 64
 
 Output:
-  DK = d1 97 b1 b3 3d b0 14 3e 
-       01 8b 12 f3 d1 d1 47 9e 
-       6c de bd cc 97 c5 c0 f8 
-       7f 69 02 e0 72 f4 57 b5 
-       14 3f 30 60 26 41 b3 d5 
-       5c d3 35 98 8c b3 6b 84 
-       37 60 60 ec d5 32 e0 39 
-       b7 42 a2 39 43 4a f2 d5 
+  DK = d1 97 b1 b3 3d b0 14 3e
+       01 8b 12 f3 d1 d1 47 9e
+       6c de bd cc 97 c5 c0 f8
+       7f 69 02 e0 72 f4 57 b5
+       14 3f 30 60 26 41 b3 d5
+       5c d3 35 98 8c b3 6b 84
+       37 60 60 ec d5 32 e0 39
+       b7 42 a2 39 43 4a f2 d5
 */
 SELECT system.PBKDF2('SHA512', 'password', 'salt', 4096, 64, false)=UPPER('d197b1b33db0143e018b12f3d1d1479e6cdebdcc97c5c0f87f6902e072f457b5143f30602641b3d55cd335988cb36b84376060ecd532e039b742a239434af2d5');
 /*
@@ -166,14 +166,14 @@ Input:
   dkLen = 64
 
 Output:
-  DK = 8c 05 11 f4 c6 e5 97 c6 
-       ac 63 15 d8 f0 36 2e 22 
-       5f 3c 50 14 95 ba 23 b8 
-       68 c0 05 17 4d c4 ee 71 
-       11 5b 59 f9 e6 0c d9 53 
-       2f a3 3e 0f 75 ae fe 30 
-       22 5c 58 3a 18 6c d8 2b 
-       d4 da ea 97 24 a3 d3 b8 
+  DK = 8c 05 11 f4 c6 e5 97 c6
+       ac 63 15 d8 f0 36 2e 22
+       5f 3c 50 14 95 ba 23 b8
+       68 c0 05 17 4d c4 ee 71
+       11 5b 59 f9 e6 0c d9 53
+       2f a3 3e 0f 75 ae fe 30
+       22 5c 58 3a 18 6c d8 2b
+       d4 da ea 97 24 a3 d3 b8
 */
 SELECT system.PBKDF2('SHA512', 'passwordPASSWORDpassword', 'saltSALTsaltSALTsaltSALTsaltSALTsalt', 4096, 64, false)=UPPER('8c0511f4c6e597c6ac6315d8f0362e225f3c501495ba23b868c005174dc4ee71115b59f9e60cd9532fa33e0f75aefe30225c583a186cd82bd4daea9724a3d3b8');
 /*

@@ -52,17 +52,17 @@ BEGIN
 	 */
     DECLARE len, pos INT UNSIGNED;
     DECLARE result MEDIUMBLOB;
-    
+
 	SET len = GREATEST(LENGTH(string1),LENGTH(string2));
     SET result = '';
     SET pos = 1;
     WHILE pos <= len DO
-        SET result = CONCAT(result, 
-        				CHAR(ORD(SUBSTR(string1, IF(pos>LENGTH(string1),LENGTH(string1),pos), 1)) ^ 
+        SET result = CONCAT(result,
+        				CHAR(ORD(SUBSTR(string1, IF(pos>LENGTH(string1),LENGTH(string1),pos), 1)) ^
 						     ORD(SUBSTR(string2, IF(pos>LENGTH(string2),LENGTH(string2),pos), 1))) );
         SET pos = pos + 1;
     END WHILE;
-    
+
     RETURN result;
 END//
 DELIMITER ;
@@ -75,7 +75,7 @@ CREATE FUNCTION `HMAC`(`algo` ENUM('MD5','SHA1','SHA224','SHA256','SHA384','SHA5
     DETERMINISTIC
     COMMENT 'Generate a keyed hash value using the HMAC method'
 BEGIN
-	/* 
+	/*
 	 * HMAC hash function
 	 * algo - The hash algorithm to use (see enum for possible values). Recommended: 'SHA256'
 	 * msg - Message to be hashed.
@@ -90,11 +90,11 @@ BEGIN
     DECLARE res TINYBLOB;
 
 	SET hashlen = POW(2,CEIL(LOG2( LENGTH(CHECKSUM_HASH('',algo)) )));
-	
+
     IF LENGTH(msgkey) > hashlen THEN
         SET msgkey = UNHEX(CHECKSUM_HASH(msgkey, algo));
     END IF;
-    
+
     SET msgkey = RPAD(msgkey, hashlen, 0x00);
 
     SET ipad = STRING_XOR(msgkey, CHAR(0x36));
@@ -117,7 +117,7 @@ CREATE FUNCTION `PBKDF2`(`algo` ENUM('MD5','SHA1','SHA224','SHA256','SHA384','SH
     NO SQL
     DETERMINISTIC
 BEGIN
-	/* 
+	/*
 	 * PBKDF2 key derivation function as defined by RSA's PKCS #5: https://www.ietf.org/rfc/rfc2898.txt
 	 * algo - The hash algorithm to use (see enum for possible values). Recommended: 'SHA256'
 	 * password - The password
@@ -130,7 +130,7 @@ BEGIN
 	 * Test vectors can be found here: https://www.ietf.org/rfc/rfc6070.txt
 	 *
 	 * This implementation of PBKDF2 was originally created by https://defuse.ca (https://defuse.ca/php-pbkdf2.htm)
-	 * With improvements by http://www.variations-of-shadow.com and 
+	 * With improvements by http://www.variations-of-shadow.com and
 	 */
 
     DECLARE i, j, k, block_count, hashlen INT UNSIGNED;
@@ -163,9 +163,9 @@ BEGIN
 	END WHILE;
 
     IF raw_output THEN
-        return SUBSTRING(output, 1, key_length);
+        RETURN SUBSTRING(output, 1, key_length);
     ELSE
-        return HEX(SUBSTRING(output, 1, key_length));
+        RETURN LOWER(CONVERT(HEX(SUBSTRING(output, 1, key_length)) USING latin1));
     END IF;
 END//
 DELIMITER ;
