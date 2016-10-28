@@ -136,7 +136,7 @@ BEGIN
     DECLARE i, j, k, block_count, hashlen INT UNSIGNED;
     DECLARE output, last, xorsum MEDIUMBLOB;
 
-	SET hashlen = POW(2,CEIL(LOG2( LENGTH(CHECKSUM_HASH('',algo))>>2 )));
+	SET hashlen = POW(2,CEIL(LOG2( LENGTH(CHECKSUM_HASH('',algo)) )));
 
 	IF key_length=0 THEN
 		SET key_length = hashlen;
@@ -163,9 +163,9 @@ BEGIN
 	END WHILE;
 
     IF raw_output THEN
-        RETURN SUBSTRING(output, 1, key_length);
+        RETURN LEFT(output, key_length);
     ELSE
-        RETURN LOWER(CONVERT(HEX(SUBSTRING(output, 1, key_length)) USING latin1));
+        RETURN LOWER(CONVERT(LEFT(HEX(output), key_length) USING latin1));
     END IF;
 END//
 DELIMITER ;
