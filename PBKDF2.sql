@@ -165,7 +165,7 @@ BEGIN
     IF raw_output THEN
         RETURN LEFT(output, key_length);
     ELSE
-        RETURN LOWER(CONVERT(LEFT(HEX(output), key_length) USING latin1));
+        RETURN LOWER(CONVERT(HEX(LEFT(output, key_length)) USING utf8));
     END IF;
 END//
 DELIMITER ;
