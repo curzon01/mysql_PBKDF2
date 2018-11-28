@@ -15,7 +15,7 @@ Output:
        a8 65 48 c9 2c cc 35 48
        08 05 98 7c b7 0b e1 7b (32 octets)
 */
-SELECT system.PBKDF2('SHA256', 'password', 'salt', 1, 0, false)=UPPER('120fb6cffcf8b32c43e7225256c4f837a86548c92ccc35480805987cb70be17b');
+SELECT CONVERT(system.PBKDF2('SHA256', 'password', 'salt', 1, 0, false) USING utf8)=UPPER('120fb6cffcf8b32c43e7225256c4f837a86548c92ccc35480805987cb70be17b');
 /*
 
 Input:
@@ -30,7 +30,7 @@ Output:
        2a 30 3f 8e f3 c2 51 df
        d6 e2 d8 5a 95 47 4c 43 (32 octets)
 */
-SELECT system.PBKDF2('SHA256', 'password', 'salt', 2, 32, false)=UPPER('ae4d0c95af6b46d32d0adff928f06dd02a303f8ef3c251dfd6e2d85a95474c43');
+SELECT CONVERT(system.PBKDF2('SHA256', 'password', 'salt', 2, 32, false) USING utf8)=UPPER('ae4d0c95af6b46d32d0adff928f06dd02a303f8ef3c251dfd6e2d85a95474c43');
 /*
 
 
@@ -46,7 +46,7 @@ Output:
        96 28 93 a0 01 ce 4e 11
        a4 96 38 73 aa 98 13 4a (32 octets)
 */
-SELECT system.PBKDF2('SHA256', 'password', 'salt', 4096, 32, false)=UPPER('c5e478d59288c841aa530db6845c4c8d962893a001ce4e11a4963873aa98134a');
+SELECT CONVERT(system.PBKDF2('SHA256', 'password', 'salt', 4096, 32, false) USING utf8)=UPPER('c5e478d59288c841aa530db6845c4c8d962893a001ce4e11a4963873aa98134a');
 /*
 
 
@@ -62,7 +62,7 @@ Output:
        f7 f1 79 e8 9b 3b 0b cb
        17 ad 10 e3 ac 6e ba 46 (32 octets)
 */
-SELECT system.PBKDF2('SHA256', 'password', 'salt', 16777216, 32, false)=UPPER('cf81c66fe8cfc04d1f31ecb65dab4089f7f179e89b3b0bcb17ad10e3ac6eba46');
+SELECT CONVERT(system.PBKDF2('SHA256', 'password', 'salt', 16777216, 32, false) USING utf8)=UPPER('cf81c66fe8cfc04d1f31ecb65dab4089f7f179e89b3b0bcb17ad10e3ac6eba46');
 /*
 
 
@@ -79,7 +79,7 @@ Output:
        1c 4e 2a 1f b8 dd 53 e1
        c6 35 51 8c 7d ac 47 e9 (40 octets)
 */
-SELECT system.PBKDF2('SHA256', 'passwordPASSWORDpassword', 'saltSALTsaltSALTsaltSALTsaltSALTsalt', 4096, 40, false)=UPPER('348c89dbcbd32b2f32d814b8116e84cf2b17347ebc1800181c4e2a1fb8dd53e1c635518c7dac47e9');
+SELECT CONVERT(system.PBKDF2('SHA256', 'passwordPASSWORDpassword', 'saltSALTsaltSALTsaltSALTsaltSALTsalt', 4096, 40, false) USING utf8)=UPPER('348c89dbcbd32b2f32d814b8116e84cf2b17347ebc1800181c4e2a1fb8dd53e1c635518c7dac47e9');
 /*
 
 
@@ -93,7 +93,7 @@ Output:
   DK = 89 b6 9d 05 16 f8 29 89
        3c 69 62 26 65 0a 86 87 (16 octets)
 */
-SELECT system.PBKDF2('SHA256', CONCAT('pass',CHAR(0), 'word'), CONCAT('sa',CHAR(0), 'lt'), 4096, 16, false)=UPPER('89b69d0516f829893c696226650a8687');
+SELECT CONVERT(system.PBKDF2('SHA256', CONCAT('pass',CHAR(0), 'word'), CONCAT('sa',CHAR(0), 'lt'), 4096, 16, false) USING utf8)=UPPER('89b69d0516f829893c696226650a8687');
 
 
 /*
@@ -115,7 +115,7 @@ Output:
        05 02 35 d7 d6 8b 1d a5
        5e 63 f7 3b 60 a5 7f ce
 */
-SELECT system.PBKDF2('SHA512', 'password', 'salt', 1, 64, false)=UPPER('867f70cf1ade02cff3752599a3a53dc4af34c7a669815ae5d513554e1c8cf252c02d470a285a0501bad999bfe943c08f050235d7d68b1da55e63f73b60a57fce');
+SELECT CONVERT(system.PBKDF2('SHA512', 'password', 'salt', 1, 64, false) USING utf8)=UPPER('867f70cf1ade02cff3752599a3a53dc4af34c7a669815ae5d513554e1c8cf252c02d470a285a0501bad999bfe943c08f050235d7d68b1da55e63f73b60a57fce');
 /*
 
 
@@ -135,7 +135,7 @@ Output:
        be 67 33 5c 77 a6 06 8e
        04 11 27 54 f2 7c cf 4e
 */
-SELECT system.PBKDF2('SHA512', 'password', 'salt', 2, 64, false)=UPPER('e1d9c16aa681708a45f5c7c4e215ceb66e011a2e9f0040713f18aefdb866d53cf76cab2868a39b9f7840edce4fef5a82be67335c77a6068e04112754f27ccf4e');
+SELECT CONVERT(system.PBKDF2('SHA512', 'password', 'salt', 2, 64, false) USING utf8)=UPPER('e1d9c16aa681708a45f5c7c4e215ceb66e011a2e9f0040713f18aefdb866d53cf76cab2868a39b9f7840edce4fef5a82be67335c77a6068e04112754f27ccf4e');
 /*
 
 
@@ -155,7 +155,7 @@ Output:
        37 60 60 ec d5 32 e0 39
        b7 42 a2 39 43 4a f2 d5
 */
-SELECT system.PBKDF2('SHA512', 'password', 'salt', 4096, 64, false)=UPPER('d197b1b33db0143e018b12f3d1d1479e6cdebdcc97c5c0f87f6902e072f457b5143f30602641b3d55cd335988cb36b84376060ecd532e039b742a239434af2d5');
+SELECT CONVERT(system.PBKDF2('SHA512', 'password', 'salt', 4096, 64, false) USING utf8)=UPPER('d197b1b33db0143e018b12f3d1d1479e6cdebdcc97c5c0f87f6902e072f457b5143f30602641b3d55cd335988cb36b84376060ecd532e039b742a239434af2d5');
 /*
 
 
@@ -175,5 +175,5 @@ Output:
        22 5c 58 3a 18 6c d8 2b
        d4 da ea 97 24 a3 d3 b8
 */
-SELECT system.PBKDF2('SHA512', 'passwordPASSWORDpassword', 'saltSALTsaltSALTsaltSALTsaltSALTsalt', 4096, 64, false)=UPPER('8c0511f4c6e597c6ac6315d8f0362e225f3c501495ba23b868c005174dc4ee71115b59f9e60cd9532fa33e0f75aefe30225c583a186cd82bd4daea9724a3d3b8');
+SELECT CONVERT(system.PBKDF2('SHA512', 'passwordPASSWORDpassword', 'saltSALTsaltSALTsaltSALTsaltSALTsalt', 4096, 64, false) USING utf8)=UPPER('8c0511f4c6e597c6ac6315d8f0362e225f3c501495ba23b868c005174dc4ee71115b59f9e60cd9532fa33e0f75aefe30225c583a186cd82bd4daea9724a3d3b8');
 /*

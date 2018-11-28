@@ -34,10 +34,10 @@ Returns a `key_length`-byte key derived from the password and salt.
 
 Examples:
 
-    SELECT PBKDF2('SHA256', 'password', 'salt', 1, 0, false);
+    SELECT CONVERT(PBKDF2('SHA256', 'password', 'salt', 1, 0, false) USING utf8);
 
 returns `120FB6CFFCF8B32C43E7225256C4F837A86548C92CCC35480805987CB70BE17B`
 
 To get a list of possible enum values for `algo` use  `CHECKSUM_HASH()` with `NULL` parameter:
 
-    SELECT CHECKSUM_HASH(NULL,NULL);
+    SELECT CONVERT(CHECKSUM_HASH(NULL,NULL) USING utf8);
